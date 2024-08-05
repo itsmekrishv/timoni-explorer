@@ -7,13 +7,13 @@ bundle: {
                 url:     "oci://ghcr.io/stefanprodan/modules/redis"
                 version: "7.0.9"
             }
-            namespace: "podinfo"
+            namespace: "timoni-demo"
             values: maxmemory: 256
         }
         podinfo: {
             module: url:     "oci://ghcr.io/stefanprodan/modules/podinfo"
             module: version: "6.3.4"
-            namespace: "podinfo"
+            namespace: "timoni-demo"
             values: caching: {
                 enabled:  true
                 redisURL: "tcp://redis:6379"
