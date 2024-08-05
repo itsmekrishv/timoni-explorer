@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bundle-podinfo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/itsmekrishv/timoni-explorer.git'
+    path: timoni
+    targetRevision: HEAD
+    plugin:
+      name: argo-cmp-timoni-v0.1.0
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: podinfo
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
