@@ -1,0 +1,19 @@
+repoServer:
+  extraContainers:
+  - image: saikrishnavedaraju/timoni-explorer:0.0.1
+    imagePullPolicy: IfNotPresent
+    name: argo-cmp-timoni
+    resources: {}
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 999
+    volumeMounts:
+    - mountPath: /var/run/argocd
+      name: var-files
+    - mountPath: /home/argocd/cmp-server/plugins
+      name: plugins
+    - mountPath: /tmp
+      name: cmp-tmp
+  volumes:
+  - emptyDir: {}
+    name: cmp-tmp
